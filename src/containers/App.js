@@ -93,12 +93,10 @@ var chartData = {
         "Line 8"]
 };
 
+// TODO: style up the emotion graph
 var chartOptions = {}
-//var myLine = new Chart(document.getElementById("canvas").getContext("2d")).Line(lineChartData);
-
 
 var LineChart = require("react-chartjs").Line;
-
 
 var EmotionGraph = React.createClass({
   render: function() {
@@ -116,10 +114,20 @@ var PlayLines = React.createClass({
 
   componentDidMount: function() {
     this.serverRequest = $.get(this.props.source, function (result) {
+      // TODO: set indexes to pagination values set by navigation state
+      // TODO: once this logic is stablem, expand state to include multiple lines.
       var currentLine = result[20];
       this.setState({
         line_id: currentLine.line_id,
         text_entry: currentLine.text_entry
+        emotions: {
+          anger: null,
+          disgust: null,
+          fear: null,
+          joy: null,
+          sadness: null
+        }
+
       });
     }.bind(this));
   },
@@ -128,22 +136,20 @@ var PlayLines = React.createClass({
     this.serverRequest.abort();
   },
 
+  //TODO: Once Json has fetched the lines for this page of the play, asyncronously send a dispatch action to run another serverRequest call to fetch emotion data from Watson API. This data will populate the emotion{} record. Due to the strict one way data flow espoused by react flux, we need to allow the dispatching of functions rather than objects. This will be made possible with the inclusion of react's implemntation of thunks
+
   render: function() {
     return (
       <div>
        line: {this.state.line_id}<br/>
-       text: {this.state.text_entry}
-       
+       text: {this.state.text_entry}       
       </div>
     );
-    ////{JSON.stringify(chartData, null, 2) }
   }
 });
 
-
-
-//<PlayLines source="http://www.spinferno.com/wp-content/uploads/henry_iv.json" />
-
+// TODO: instantiate current view of play
+// <PlayLines source="http://www.spinferno.com/wp-content/uploads/henry_iv.json" />
 
     return (
       <div className="main-app-container">
