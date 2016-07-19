@@ -6,6 +6,7 @@ Key features intended of this web application are:
 
 * Line-by-line Emotion analysis of the play, fetched from data from Watson API
 * An intuitive user interface which makes the emotion data accessible and friendly to use.
+* graphing of emotions matching each line of the play.
 
 Requirements
 ----------
