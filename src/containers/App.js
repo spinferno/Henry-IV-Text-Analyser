@@ -108,7 +108,14 @@ var PlayLines = React.createClass({
   getInitialState: function() {
     return {
       line_id: '',
-      text_entry: ''
+      text_entry: '',
+      emotions: {
+          anger: null,
+          disgust: null,
+          fear: null,
+          joy: null,
+          sadness: null
+        }
     };
   },
 
@@ -119,7 +126,7 @@ var PlayLines = React.createClass({
       var currentLine = result[20];
       this.setState({
         line_id: currentLine.line_id,
-        text_entry: currentLine.text_entry
+        text_entry: currentLine.text_entry,
         emotions: {
           anger: null,
           disgust: null,
