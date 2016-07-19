@@ -10,10 +10,6 @@
     "start": "node devServer.js",
     "lint": "eslint src"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/tsaiDavid/simple-redux-boilerplate.git"
-  },
   "devDependencies": {
     "autoprefixer": "^6.3.1",
     "babel-core": "^6.3.15",
